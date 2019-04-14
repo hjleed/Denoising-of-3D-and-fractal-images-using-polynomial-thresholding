@@ -1,0 +1,37 @@
+http://www.rotman-baycrest.on.ca/~jimmy/NIfTI for detail descriptions
+
+http://www.rotman-baycrest.on.ca/~jimmy/NIfTI/FAQ.htm for frequently asked questions
+
+http://www.rotman-baycrest.on.ca/~jimmy/UseANALYZE.htm if you are using ANALYZE images
+ 
+Basic Programs:
+
+1. load_nii.m: Load N-Dimensional NIfTI data (where N can be from 3 to 7) or ANALYZE data (where N can be from 3 to 4), and apply header info (e.g. affine geometric transform, voxel intensity scaling, etc.) to the data. If your data has more than 3-Dimension (e.g. time series etc.), you can also specify a range to extract only 1 or several volumes.
+
+2. save_nii.m: Save N-Dimensional NIfTI data (where N can be from 3 to 7) that is loaded by "load_nii.m" or made by "make_nii.m".
+
+3. make_nii.m: Make N-Dimensional NIfTI data (where N can be from 3 to 7) based on the N-Dimensional matrix and other optional parameters (e.g. voxel_size, origin, etc.). Using "save_nii" command, the NIfTI data that is made by "make_nii" can be saved into a NIfTI file.
+
+4. make_ana.m: Make 3D ANALYZE data based on the 3D matrix and other optional parameters (e.g. voxel_size, origin, etc.). Using "save_untouch_nii" command, the ANALYZE data that is made by "make_ana" can be saved into an ANALYZE file in order to be compatible with some ANALYZE only programs.
+
+5. reslice_nii.m: Reslice 3D (or 4D) NIfTI data or ANALYZE data with affine matrix M in .mat file. The program will base on the affine matrix, which is especially useful for oblique images with non-orthogonal rotation or shearing that cannot be loaded with "load_nii.m". You can also specify voxel_size, etc. It will not cause negative effect, as long as you remember not to do slice time correction after using "reslice_nii.m".
+
+6. view_nii.m: View 3D (or 4D) NIfTI data or ANALYZE data that is loaded by "load_nii.m" or made by "make_nii.m". Activation map, ROI, etc. can be overlaid on top of a background image (see above picture). Plotted view can be embedded into your existing figure window. See detail at http://www.rotman-baycrest.on.ca/~jimmy/NIfTI/examples.txt.
+
+7. load_untouch_nii.m: Load N-Dimensional NIfTI data (where N can be from 3 to 7) or ANALYZE data (where N can be from 3 to 4), but do not apply any changes indicated in the header. (Warning: Do not apply "view_nii.m" to the dataset loaded with "load_untouch_nii.m".
+
+8. save_untouch_nii.m: Save N-Dimensional NIfTI data (where N can be from 3 to 7) or ANALYZE data (where N can be from 3 to 4) that is loaded by "load_untouch_nii.m" or made by "make_ana.m". If you do not modify the loaded dataset, the header and data in the new saved file should be the same as those in the original file.
+
+Other Programs:
+ 
+1. collapse_nii_scan.m: Integrate multiple single-scan NIfTI or ANALYZE files into a multiple-scan NIfTI file.
+ 
+2. expand_nii_scan.m: Break a multiple-scan NIfTI file into multiple single-scan NIfTI files.
+ 
+3. flip_lr.m: Convert ANALYZE or NIfTI file to an L-R flipped NIfTI file. (Warning: please use this program with caution!).
+ 
+4. get_nii_frame.m: Return number of time frames of a NIfTI dataset.
+ 
+5. load_nii_ext.m: Load NIfTI header extension.
+ 
+6. mat_into_hdr.m: Integrate the affine matrix in old SPM MATLAB file into its .hdr header file to become NIfTI format file.
